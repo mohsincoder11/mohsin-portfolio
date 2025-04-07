@@ -1,10 +1,10 @@
 import { createWebHistory, createRouter } from "vue-router";
-import Login from "./pages/Auth/Login.vue";
+import Home from "./pages/Home.vue";
 const routes = [
     {
         path: "/",
-        name: "Login",
-        component: Login,
+        name: "Home",
+        component: Home,
         meta: {},
     }
 ]
@@ -21,25 +21,6 @@ const router = createRouter({
     },
 });
 router.beforeEach((to, from, next) => {
-    store.dispatch("loading/setLoading", true); // Vuex example for enabling loader
-    if (to.matched.some((record) => record.meta.requiresAuth)) {
-        if (!store.getters.isAuthenticated) {
-            next({
-                name: "sign-in",
-            });
-        } else {
-            next();
-        }
-    } else if (to.matched.some((record) => record.meta.OnlyGuest)) {
-        if (store.getters.isAuthenticated) {
-            next({
-                name: "home",
-            });
-        } else {
-            next();
-        }
-    } else {
-        next();
-    }
+    next();
 });
 export default router;

@@ -1,13 +1,40 @@
 <template>
-    <div>
-        hello
-        
-    </div>
+   
+    <Loader />
+    <main>
+        <router-view  />
+    </main>
+
+   
 </template>
 
 <script>
-export default{
-    name: "App",
-}
+// import Loader from './components/Loader.vue';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
+export default {
+    name: "App",
+    data() {
+        return {
+            footer: [],
+        };
+    },
+   
+    computed: {
+       
+    },
+    watch: {
+      
+    },
+    methods: {
+      
+    },
+    mounted() {
+        AOS.init();
+
+    },
+};
 </script>
+
+<style></style>
